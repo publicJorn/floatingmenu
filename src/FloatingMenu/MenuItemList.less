@@ -1,0 +1,27 @@
+@import "~styles/variables";
+
+.MenuItemList {
+  position: absolute;
+  top: .75rem;
+  left: -100%;
+  transition: .5s;
+  z-index: 1;
+  margin: 0;
+  padding: 0 0 0 2rem;
+  list-style: none;
+}
+
+.MenuItemList--open {
+  left: 0;
+  transition: .5s;
+  background-color: @color-background;
+}
+
+.MenuItem {
+  float: left;
+  margin-right: .5rem;
+}
+
+.MenuItem-link {
+  color: @frontrain-green;
+}
