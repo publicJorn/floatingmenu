@@ -10,7 +10,7 @@ export default class MenuItemList extends Component {
     this.aniimationStyle = {};
   }
 
-  setCssLeft (listEl) {
+  setAnimationStyle (listEl) {
     if (!listEl) return;
 
     if (this.props.open) {
@@ -38,7 +38,7 @@ export default class MenuItemList extends Component {
     const classes = classnames('MenuItemList', {'MenuItemList--open': this.props.open});
 
     return (
-      <ul className={classes} style={{this.animationStyle}} ref={this.setAnimationStyle.bind(this)}>
+      <ul className={classes} style={this.animationStyle} ref={this.setAnimationStyle.bind(this)}>
         {MenuItemNodes}
       </ul>
     );
