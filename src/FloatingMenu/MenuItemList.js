@@ -7,23 +7,16 @@ require('./MenuItemList.less');
 export default class MenuItemList extends Component {
   constructor (props) {
     super(props);
-    this.leftPos = '';
-  }
-
-  componentDidMount () {
-    // const width = this.refs.list.clientWidth;
-    // this.refs.list
+    this.aniimationStyle = {};
   }
 
   setCssLeft (listEl) {
     if (!listEl) return;
 
     if (this.props.open) {
-      console.log('open');
-      this.leftPos = -listEl.clientWidth;
+      this.animationStyle = {left: -listEl.clientWidth};
     } else {
-      console.log('close');
-      this.leftPos = 0;
+      this.animationStyle = {left: 0};
     }
   }
 
@@ -45,7 +38,7 @@ export default class MenuItemList extends Component {
     const classes = classnames('MenuItemList', {'MenuItemList--open': this.props.open});
 
     return (
-      <ul className={classes} style={{left:this.leftPos}} ref={this.setCssLeft.bind(this)}>
+      <ul className={classes} style={{this.animationStyle}} ref={this.setAnimationStyle.bind(this)}>
         {MenuItemNodes}
       </ul>
     );
