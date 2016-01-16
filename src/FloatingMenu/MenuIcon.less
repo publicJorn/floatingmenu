@@ -4,10 +4,14 @@
   position: relative;
   z-index: 2;
   width: 1.5rem;
-  height: 30px;
+  height: 25px;
   margin: .5rem 0;
   background-color: @color-background;
   cursor: pointer;
+  border-radius: 2px;
+  // box-shadow: // 3px room is given in FloatingMenu.less
+  //   0px 0px 0px 2px @color-background,
+  //   0px 0px 0px 3px #bbb;
 
   transform: rotate(0deg);
   transition: .5s ease-in-out;
@@ -52,7 +56,8 @@
   top: 20px;
 }
 
-// Not very SUIT, but JS source will be easier & more performant
+// Not very "SUIT", but JS source will be easier & a tad more performant
+// since we don't set different classes on each span
 .MenuIcon--open {
   .MenuIcon-part:nth-child(1),
   .MenuIcon-part:nth-child(6) {

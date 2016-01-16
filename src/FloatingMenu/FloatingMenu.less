@@ -1,5 +1,18 @@
+/**
+ * I am not yet decided what is better:
+ * 1. A separate less file for each component that is included by a `require` in JS
+ *    - This does give the greatest portability of individual components, eg. the MenuIcon could be used elsewhere
+ *
+ * 2. A separate less file for each component, but included using `@import` in the main less file (this file),
+ *    so only one file is `require`d by JS
+ *    - Advantage is that this "set" of components, which are meant to work together, can share it's specific variables
+ *      eg. the margin-left and padding-left variables here are needed to position the MenuIcon properly which has a
+ *      box-shadow of 3px
+ */
 .FloatingMenu {
   position: relative;
   width: 100%;
   overflow: hidden;
+  // margin-left: -3px;
+  // padding-left: 3px;
 }
