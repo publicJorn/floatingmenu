@@ -39,16 +39,19 @@ export class FloatingMenu extends Component {
   }
 
   toggleOpenState () {
+    const newOpenState = !this.state.open;
     this.setState({
-      open: !this.state.open
+      open: newOpenState
     });
 
-    return this.state.open;
+    return newOpenState;
   }
 
   render () {
     const classes = classnames('FloatingMenu', {'FloatingMenu--floating': this.state.floating});
 
+    // Note to self: `ref` is called each time the component is rendered. This happens initially,
+    // but also if something (eg. prop|state) changes.
     return (
       <div className={classes} ref={(c) => this._menu = c}>
         <div className="FloatingMenu-Inner">

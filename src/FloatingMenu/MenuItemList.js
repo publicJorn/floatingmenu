@@ -7,16 +7,29 @@ require('./MenuItemList.less');
 export default class MenuItemList extends Component {
   constructor (props) {
     super(props);
-    this.aniimationStyle = {};
+    this.state = {
+      animationStyle: {}
+    };
   }
 
-  setAnimationStyle (listEl) {
-    if (!listEl) return;
+  componentDidMount () {
+    // Overwrite initial css styles
+    this.setAnimationStyle();
+  }
 
-    if (this.props.open) {
-      this.animationStyle = {left: -listEl.clientWidth};
+  componentWillReceiveProps (newProps) {
+    this.setAnimationStyle(newProps);
+  }
+
+  /**
+   * We need this._itemsList to calculate actual width of list
+   * This makes the transition smoother
+   */
+  setAnimationStyle (newProps) {
+    if (newProps && newProps.open) {
+      this.setState({ animationStyle: {left: 0} });
     } else {
-      this.animationStyle = {left: 0};
+      this.setState({ animationStyle: {left: -this._itemsList.clientWidth} });
     }
   }
 
@@ -25,6 +38,7 @@ export default class MenuItemList extends Component {
   }
 
   render () {
+    console.info('render menuItemList');
     // Build an array of `MenuItem` nodes to inject in the list
     const MenuItemNodes = this.props.items.map((name, i) => {
       return (
@@ -38,7 +52,7 @@ export default class MenuItemList extends Component {
     const classes = classnames('MenuItemList', {'MenuItemList--open': this.props.open});
 
     return (
-      <ul className={classes} style={this.animationStyle} ref={this.setAnimationStyle.bind(this)}>
+      <ul className={classes} style={this.state.animationStyle} ref={(c) => this._itemsList = c}>
         {MenuItemNodes}
       </ul>
     );
