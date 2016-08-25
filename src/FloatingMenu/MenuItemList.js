@@ -38,7 +38,6 @@ export default class MenuItemList extends Component {
   }
 
   render () {
-    console.info('render menuItemList');
     // Build an array of `MenuItem` nodes to inject in the list
     const MenuItemNodes = this.props.items.map((name, i) => {
       return (
