@@ -1,3 +1,5 @@
+@import "~styles/variables";
+
 /**
  * I am not yet decided what is better:
  * 1. A separate less file for each component that is included by a `require` in JS
@@ -13,6 +15,17 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  // margin-left: -3px;
-  // padding-left: 3px;
+  background-color: @color-background;
+
+  &--floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: @body-margin-unit;
+    padding-left: @body-margin-unit;
+  }
+}
+
+.FloatingMenu-Inner {
+  position: relative;
 }
