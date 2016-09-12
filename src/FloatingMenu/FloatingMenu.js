@@ -18,7 +18,7 @@ export class FloatingMenu extends Component {
   }
 
   componentDidMount () {
-    this.relativeDomScrollPosition = this._menu.getBoundingClientRect().top;
+    this.relativeDomScrollPosition = this._menu.getBoundingClientRect().top + document.body.scrollTop;
     window.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
@@ -27,8 +27,7 @@ export class FloatingMenu extends Component {
   }
 
   handleScroll (evt) {
-    let scrolledFromTop = event.srcElement.body.scrollTop;
-    let menuPosition = this._menu.getBoundingClientRect();
+    const scrolledFromTop = event.srcElement.body.scrollTop;
 
     if (scrolledFromTop > this.relativeDomScrollPosition && !this.state.floating) {
       this.setState({ floating: true });
