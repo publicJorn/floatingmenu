@@ -13,6 +13,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+// I'm BAAAD, simply forward all requests to index
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
